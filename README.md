@@ -1,13 +1,12 @@
 # Moja Strona Next.js – Hostinger
 
-Dynamyczna aplikacja Next.js z renderowaniem po stronie serwera (SSR/ISR), gotowa do wdrożenia na [Hostinger](https://hostinger.com).
+Dynamyczna aplikacja Next.js z renderowaniem po stronie serwera (SSR), gotowa do wdrożenia na [Hostinger](https://hostinger.com).
 
 ## Funkcje
 
-- **Strona główna** – lista postów pobierana server-side z zewnętrznego API (ISR, rewalidacja co 60 s)
+- **Strona główna** – lista postów pobierana server-side z zewnętrznego API
 - **Strona postu** (`/posts/[id]`) – dynamiczny routing, treść posta + komentarze
 - **Tailwind CSS** – responsywny, ciemny/jasny motyw
-- **Custom server** (`server.js`) – odczytuje `PORT` z env, wymagany przez Hostinger Node.js
 
 ## Uruchomienie lokalnie
 
@@ -26,7 +25,6 @@ Otwórz [http://localhost:3000](http://localhost:3000).
    ```
 
 2. **Prześlij pliki** na serwer (przez Git lub menedżer plików Hostinger):
-   - `server.js`
    - `package.json` / `package-lock.json`
    - katalog `.next/`
    - `public/`
@@ -37,16 +35,11 @@ Otwórz [http://localhost:3000](http://localhost:3000).
    npm install --omit=dev
    ```
 
-4. **Ustaw punkt wejścia** w panelu Hostinger na `server.js`.
-
-5. **Uruchom:**
+4. **Uruchom** – Hostinger automatycznie ustawi `PORT` i uruchomi:
    ```bash
    npm start
-   # lub bezpośrednio:
-   node server.js
+   # co odpowiada: next start -p $PORT
    ```
-
-   Hostinger automatycznie ustawia zmienną środowiskową `PORT`. Aplikacja uruchomi się na właściwym porcie.
 
 ## Zmienne środowiskowe
 
@@ -58,9 +51,8 @@ Otwórz [http://localhost:3000](http://localhost:3000).
 ## Struktura projektu
 
 ```
-├── server.js            # Własny serwer HTTP dla Hostinger
 ├── src/app/
-│   ├── page.tsx         # Strona główna (lista postów – SSR/ISR)
+│   ├── page.tsx         # Strona główna (lista postów – SSR)
 │   └── posts/[id]/
 │       └── page.tsx     # Dynamiczna strona posta
 └── next.config.ts
